@@ -1,0 +1,33 @@
+version: '3'
+services:
+    postgres-service:
+        image: postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            PGDATABASE: TASK_DB
+            PGDATA: /data/postgres
+        volumes:
+            - postgres:/data/postgres
+        networks:
+            - postgres
+        ports:
+            - 5432:5432
+    pgAdmin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+        volumes:
+            - pgadmin:/root/.pgadmin
+        ports:
+            - 5050:80
+        networks:
+            - postgres
+networks:
+    postgres:
+        driver: bridge
+volumes:
+    postgres:
+    pgadmin:
