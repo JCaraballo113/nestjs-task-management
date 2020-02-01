@@ -1,5 +1,18 @@
 version: '3'
 services:
+    nest_api:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        env_file:
+            - .env
+        volumes:
+            - .:/app
+            - /app/node_modules
+        ports:
+            - 3000:3000
+        networks:
+            - webnet
     postgres-service:
         image: postgres
         restart: unless-stopped
@@ -10,7 +23,7 @@ services:
         volumes:
             - postgres:/data/postgres
         networks:
-            - postgres
+            - webnet
         ports:
             - 5432:5432
     pgAdmin:
@@ -23,9 +36,9 @@ services:
         ports:
             - 5050:80
         networks:
-            - postgres
+            - webnet
 networks:
-    postgres:
+    webnet:
         driver: bridge
 volumes:
     postgres:
