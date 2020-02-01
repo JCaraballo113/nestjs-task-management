@@ -7,7 +7,7 @@
   <li><a href="https://reactjs.org/">ReactJS</a> for the front-end</li>
 </ul>
 
-<h1>Running this app</h1>
+<h1>Setting up your development environment</h1>
 <p>The steps to run this app are pretty simple, please make sure to have the following installed before proceeding</p>
 <ul>
   <li><a href="https://nodejs.org/">NodeJS</a></li>
@@ -19,8 +19,8 @@
 <ul>
   <li>Clone the repo</li>
   <li>Add a <code>.env</code> file to the root of the project and add the variables <code>PGADMIN_DEFAULT_EMAIL</code> <code>PGADMIN_DEFAULT_PASSWORD</code> <code>POSTGRES_PASSWORD</code>. They can have whatever value you'd like.</li>
-  <li>Do <code>docker-compose up</code>, this will spool up postgres as well as PGAdmin which will be exposed on port 5050</li>
-  <li> Enter PGAdmin and connect to your service. To connect simply add a server, as a hostname add the docker service name <code>postgres-service</code> and then your username and password.</li>
+  <li>Do <code>docker-compose up</code>, this will spool up everything the application needs :)</li>
+  <li>Enter PGAdmin(localhost:5050) and connect to your service. To connect simply add a server, as a hostname add the docker service name <code>postgres-service</code> and then your username and password.</li>
   <li>Create a database called <code>taskmanagement</code></li>
-  <li>Now run the API by running in your terminal <code>yarn start:dev</code></li>
+  <li>PROFIT</li>
 </ul>
