@@ -6,7 +6,6 @@ services:
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-            PGDATABASE: TASK_DB
             PGDATA: /data/postgres
         volumes:
             - postgres:/data/postgres
