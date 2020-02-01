@@ -18,7 +18,7 @@
 <p>Now to run the app:</p>
 <ul>
   <li>Clone the repo</li>
-  <li>Add a `.env` file to the root of the project and add the variables `PGADMIN_DEFAULT_EMAIL` `PGADMIN_DEFAULT_PASSWORD` `POSTGRES_PASSWORD`. They can have whatever value you'd like.</li>
+  <li>Add a <code>.env</code> file to the root of the project and add the variables `PGADMIN_DEFAULT_EMAIL` `PGADMIN_DEFAULT_PASSWORD` `POSTGRES_PASSWORD`. They can have whatever value you'd like.</li>
   <li>Do `docker-compose up`, this will spool up postgres as well as PGAdmin which will be exposed on port 5050</li>
   <li> Enter PGAdmin and connect to your service. To connect simply add a server, as a hostname add the docker service name `postgres-service` and then your username and password.</li>
   <li>There will already be a database called `TASK_DB`</li>
