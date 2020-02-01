@@ -21,6 +21,5 @@
   <li>Add a <code>.env</code> file to the root of the project and add the variables <code>PGADMIN_DEFAULT_EMAIL</code> <code>PGADMIN_DEFAULT_PASSWORD</code> <code>POSTGRES_PASSWORD</code>. They can have whatever value you'd like.</li>
   <li>Do <code>docker-compose up</code>, this will spool up everything the application needs :)</li>
   <li>Enter PGAdmin(localhost:5050) and connect to your service. To connect simply add a server, as a hostname add the docker service name <code>postgres-service</code> and then your username and password.</li>
-  <li>Create a database called <code>taskmanagement</code></li>
   <li>PROFIT</li>
 </ul>
