@@ -21,6 +21,6 @@
   <li>Add a <code>.env</code> file to the root of the project and add the variables <code>PGADMIN_DEFAULT_EMAIL</code> <code>PGADMIN_DEFAULT_PASSWORD</code> <code>POSTGRES_PASSWORD</code>. They can have whatever value you'd like.</li>
   <li>Do <code>docker-compose up</code>, this will spool up postgres as well as PGAdmin which will be exposed on port 5050</li>
   <li> Enter PGAdmin and connect to your service. To connect simply add a server, as a hostname add the docker service name <code>postgres-service</code> and then your username and password.</li>
-  <li>There will already be a database called <code>TASK_DB</code></li>
+  <li>Create a database called <code>taskmanagement</code></li>
   <li>Now run the API by running in your terminal <code>yarn start:dev</code></li>
 </ul>
