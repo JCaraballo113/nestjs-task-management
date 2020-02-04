@@ -1,2 +1,4 @@
+server:
+    origin: 's3-bucket-url-here'
 db:
     synchronize: false

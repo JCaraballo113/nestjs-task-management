@@ -4,6 +4,7 @@ import * as config from 'config';
 
 interface ServerConfig {
     port?: string;
+    origin?: string;
 }
 
 async function bootstrap() {
@@ -12,6 +13,10 @@ async function bootstrap() {
 
     if (process.env.NODE_ENV === 'development') {
         app.enableCors();
+    } else {
+        app.enableCors({
+            origin: serverConfig.origin
+        });
     }
     await app.listen(process.env.PORT || serverConfig.port);
 }
