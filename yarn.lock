@@ -490,6 +490,11 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/config@^0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@types/config/-/config-0.0.36.tgz#bf53ca640f3a1a6a2072a9f33e02a44def07a40b"
+  integrity sha512-EoAeT1MyFWh2BJvBDEFInY714bQBbHOAucqxqqhprhbBFqr+B7fuN5T9CJqUIGDzvwubnKKRqmSo6yPo0aSpNw==
+
 "@types/connect@*":
   version "3.4.33"
   resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.33.tgz#31610c901eca573b8713c3330abc6e6b9f588546"
@@ -1805,6 +1810,13 @@ concat-stream@^1.5.0, concat-stream@^1.5.2:
     inherits "^2.0.3"
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
+
+config@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/config/-/config-3.2.5.tgz#ab10ab88b61a873fbf9a5f0c6b4a22750422f243"
+  integrity sha512-8itpjyR01lAJanhAlPncBngYRZez/LoRLW8wnGi+6SEcsUyA1wvHvbpIrAJYDJT+W9BScnj4mYoUgbtp9I+0+Q==
+  dependencies:
+    json5 "^1.0.1"
 
 consola@^2.3.0:
   version "2.11.3"
