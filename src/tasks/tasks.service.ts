@@ -5,6 +5,7 @@ import { GetTasksFilterDto } from './dto/get-task-filter.dto';
 import { TaskRepository } from './task.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
+import { User } from 'src/auth/user.entity';
 
 @Injectable()
 export class TasksService {
@@ -12,12 +13,14 @@ export class TasksService {
         @InjectRepository(TaskRepository) private taskRepository: TaskRepository
     ) {}
 
-    getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {
-        return this.taskRepository.getTasks(filterDto);
+    getTasks(filterDto: GetTasksFilterDto, user: User): Promise<Task[]> {
+        return this.taskRepository.getTasks(filterDto, user);
     }
 
-    async getTaskById(id: number): Promise<Task> {
-        const task = await this.taskRepository.findOne(id);
+    async getTaskById(id: number, user: User): Promise<Task> {
+        const task = await this.taskRepository.findOne({
+            where: { id, userId: user.id }
+        });
 
         if (!task) {
             throw new NotFoundException(`Task with id ${id} not found.`);
@@ -26,30 +29,31 @@ export class TasksService {
         return task;
     }
 
-    async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
-        return this.taskRepository.createTask(createTaskDto);
+    async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
+        return this.taskRepository.createTask(createTaskDto, user);
     }
 
-    async deleteTask(id: number): Promise<void> {
-        const result = await this.taskRepository.delete(id);
+    async deleteTask(id: number, user: User): Promise<void> {
+        const result = await this.taskRepository.delete({
+            id,
+            userId: user.id
+        });
 
         if (result.affected === 0) {
             throw new NotFoundException(`Task with id ${id} not found.`);
         }
     }
 
-    async updateTaskStatus(id: number, status: TaskStatus): Promise<Task> {
-        const task = await this.getTaskById(id);
+    async updateTaskStatus(
+        id: number,
+        status: TaskStatus,
+        user: User
+    ): Promise<Task> {
+        const task = await this.getTaskById(id, user);
         task.status = status;
 
         await task.save();
 
         return task;
     }
-
-    // updateTaskStatus(id: string, status: TaskStatus): Task {
-    //     const task: Task = this.getTaskById(id);
-    //     task.status = status;
-    //     return task;
-    // }
 }
