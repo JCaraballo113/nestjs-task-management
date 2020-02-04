@@ -4,6 +4,7 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskStatus } from './task-status.enum';
 import { GetTasksFilterDto } from './dto/get-task-filter.dto';
 import { User } from 'src/auth/user.entity';
+import { InternalServerErrorException } from '@nestjs/common';
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
@@ -39,10 +40,14 @@ export class TaskRepository extends Repository<Task> {
         task.status = TaskStatus.OPEN;
         task.user = user;
 
-        await task.save();
+        try {
+            await task.save();
 
-        delete task.user;
-        return task;
+            delete task.user;
+            return task;
+        } catch (e) {
+            throw new InternalServerErrorException('Failed to create task');
+        }
     }
 
     deleteTask(id: number): void {
