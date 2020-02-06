@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
     nest_api:
         build:
@@ -12,8 +12,6 @@ services:
         ports:
             - 3000:3000
             - 9229:9229
-        networks:
-            - webnet
         depends_on:
             - postgres-service
     postgres-service:
@@ -25,8 +23,6 @@ services:
             PGDATA: /data/postgres
         volumes:
             - postgres:/data/postgres
-        networks:
-            - webnet
         ports:
             - 5432:5432
     pgAdmin:
@@ -38,11 +34,6 @@ services:
             - pgadmin:/root/.pgadmin
         ports:
             - 5050:80
-        networks:
-            - webnet
-networks:
-    webnet:
-        driver: bridge
 volumes:
     postgres:
     pgadmin:
